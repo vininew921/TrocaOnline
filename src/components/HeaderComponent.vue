@@ -14,7 +14,7 @@
         </v-flex>
       <v-spacer></v-spacer>
       <div id="profile_style">
-        <p id="profile_name">TESTE</p>
+        <p id="profile_name">{{user.username}}</p>
         <v-img id="profile_picture" src="@/assets/logo_website.png"></v-img>
       </div>
       
@@ -41,7 +41,16 @@
 
 <script>
 export default {
-    name: 'HeaderComponent'
+  name: 'HeaderComponent',
+    
+  data() {
+    return {
+      user: {
+        username: "",
+        email: "",
+      },
+    };
+  },
 }
 </script>
 

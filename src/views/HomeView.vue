@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <AppbarComponent></AppbarComponent>
-    <HeaderComponent></HeaderComponent>
+    <HeaderComponent :user="user"></HeaderComponent>
     <MainViewComponent></MainViewComponent>
   </v-app>
 </template>
@@ -19,5 +19,14 @@ import MainViewComponent from '@/components/MainViewComponent'
       HeaderComponent,
       MainViewComponent
     },
+
+    data() {
+    return {
+      user: {
+        username: "",
+        email: "",
+      },
+    };
+  },
   }
 </script>
