@@ -3,13 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve-dev": "vue-cli-service serve --port 3000 --mode development",
+    "serve-test": "vue-cli-service serve --port 3000 --mode staging",
+    "serve-prod": "vue-cli-service serve --port 3000 --mode production",
+    "serve": "npm run serve-dev",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "npm run serve"
+    "start": "node server.js",
+    "postinstall": "npm run build"
   },
   "dependencies": {
+    "connect-history-api-fallback": "^2.0.0",
     "core-js": "^3.8.3",
+    "express": "^4.18.1",
+    "serve-static": "^1.15.0",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
     "vuetify": "^2.6.0",
