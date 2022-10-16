@@ -19,6 +19,7 @@
           <v-btn
           id="caralog_button"
           rounded
+          @click="$router.push('/home')"
           color= #618DFF>
             Catálogo
           </v-btn>
@@ -37,7 +38,7 @@
             v-for="i in itensBarList"
             :key="i.title"
             link
-          >
+            @click="$router.push(i.url)">
             <v-list-item-icon>
               <v-img
               contain
@@ -60,15 +61,17 @@ export default {
         return {
             image: image,
             itensBarList:[
-              {title:"Calculadoras", icon:"calculator_icon.png"},
-              {title:"Fones", icon:"headphones_icon.png"},
-              {title:"Canetas", icon:"caneta_icon.png"},
-              {title:"Livros", icon:"books_icon.png"},
-              {title:"Teclados", icon:"keyboard_icon.png"},
-              {title:"Computadores", icon:"screen_icon.png"},
-              {title:"Ajuda", icon:"help_icon.png"}
+              {title:"Calculadoras",url:"/home/calculators", icon:"calculator_icon.png"},
+              {title:"Fones", url:"/home/headphones", icon:"headphones_icon.png"},
+              {title:"Canetas", url:"/home/pens", icon:"caneta_icon.png"},
+              {title:"Livros", url:"/home/books", icon:"books_icon.png"},
+              {title:"Teclados", url:"/home/keyboards", icon:"keyboard_icon.png"},
+              {title:"Computadores", url:"/home/machines", icon:"screen_icon.png"},
+              {title:"Ajuda", url:"/home", icon:"help_icon.png"}
             ]
         }
+    },
+    methods:{
     }
 }
 
@@ -95,5 +98,6 @@ export default {
   font-weight: bold;
   color: #FFFFFF;
 }
+
 
 </style>

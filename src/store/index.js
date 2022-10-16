@@ -11,17 +11,17 @@ export default new Vuex.Store({
       {id:3,type:"Caneta"},
       {id:4,type:"Livro"},
       {id:5,type:"Teclado"},
-      {id:6,type:"Computadore"}
+      {id:6,type:"Computador"}
     ],
     
     itensList:[
-      /*{id:1, type:"Calculadora", price:200, image:"Imagem1.png"},
+      {id:1, type:"Calculadora", price:200, image:"Imagem1.png"},
       {id:2, type:"Fone", price:300, image:"Imagem5.png"},
       {id:3, type:"Calculadora", price:260, image:"Imagem2.png"},
       {id:4, type:"Calculadora", price:120, image:"Imagem3.png"},
       {id:5, type:"Fone", price:500, image:"Imagem6.png"},
       {id:6, type:"Fone", price:320, image:"Imagem7.png"},
-      {id:7, type:"Calculadora", price:110, image:"Imagem4.png"},*/
+      {id:7, type:"Calculadora", price:110, image:"Imagem4.png"},
     ],
   },
   getters: {

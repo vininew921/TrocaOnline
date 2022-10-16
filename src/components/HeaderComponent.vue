@@ -15,7 +15,7 @@
       <v-spacer></v-spacer>
       <div id="profile_style">
         <p id="profile_name">{{user.username}}</p>
-        <v-img id="profile_picture" src="@/assets/logo_website.png"></v-img>
+        <v-img id="profile_picture" :src="user.imageURL"></v-img>
       </div>
       
       <div id="icons_style">
