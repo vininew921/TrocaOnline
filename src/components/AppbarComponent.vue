@@ -52,25 +52,25 @@
 </template>
 
 <script>
-import image from "@/assets/logo_website.png"
+import image from "@/assets/logo_website.png";
 export default {
-    name: 'Appbar',
+  name: "Appbar",
 
-    data: function () {
-        return {
-            image: image,
-            itensBarList:[
-              {title:"Calculadoras", icon:"calculator_icon.png"},
-              {title:"Fones", icon:"headphones_icon.png"},
-              {title:"Canetas", icon:"caneta_icon.png"},
-              {title:"Livros", icon:"books_icon.png"},
-              {title:"Teclados", icon:"keyboard_icon.png"},
-              {title:"Computadores", icon:"screen_icon.png"},
-              {title:"Ajuda", icon:"help_icon.png"}
-            ]
-        }
-    }
-}
+  data: function () {
+    return {
+      image: image,
+      itensBarList:[
+        {title:"Calculadoras", icon:"calculator_icon.png"},
+        {title:"Fones", icon:"headphones_icon.png"},
+        {title:"Canetas", icon:"caneta_icon.png"},
+        {title:"Livros", icon:"books_icon.png"},
+        {title:"Teclados", icon:"keyboard_icon.png"},
+        {title:"Computadores", icon:"screen_icon.png"},
+        {title:"Ajuda", icon:"help_icon.png"}
+      ]
+    };
+  }
+};
 
 </script>
 
