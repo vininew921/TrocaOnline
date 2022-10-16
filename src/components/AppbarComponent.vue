@@ -67,7 +67,7 @@ export default {
               {title:"Livros", url:"/home/books", icon:"books_icon.png"},
               {title:"Teclados", url:"/home/keyboards", icon:"keyboard_icon.png"},
               {title:"Computadores", url:"/home/machines", icon:"screen_icon.png"},
-              {title:"Ajuda", url:"/home", icon:"help_icon.png"}
+              {title:"Ajuda", url:"/home/help", icon:"help_icon.png"}
             ]
         }
     },

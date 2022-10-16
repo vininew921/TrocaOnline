@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+//import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -15,13 +16,13 @@ export default new Vuex.Store({
     ],
     
     itensList:[
-      {id:1, type:"Calculadora", price:200, image:"Imagem1.png"},
-      {id:2, type:"Fone", price:300, image:"Imagem5.png"},
-      {id:3, type:"Calculadora", price:260, image:"Imagem2.png"},
-      {id:4, type:"Calculadora", price:120, image:"Imagem3.png"},
-      {id:5, type:"Fone", price:500, image:"Imagem6.png"},
-      {id:6, type:"Fone", price:320, image:"Imagem7.png"},
-      {id:7, type:"Calculadora", price:110, image:"Imagem4.png"},
+      {id:1, type:"Calculadora", value:200, image:"Imagem1.png"},
+      {id:2, type:"Fone", value:300, image:"Imagem5.png"},
+      {id:3, type:"Calculadora", value:260, image:"Imagem2.png"},
+      {id:4, type:"Calculadora", value:120, image:"Imagem3.png"},
+      {id:5, type:"Fone", value:500, image:"Imagem6.png"},
+      {id:6, type:"Fone", value:320, image:"Imagem7.png"},
+      {id:7, type:"Calculadora", value:110, image:"Imagem4.png"},
     ],
   },
   getters: {
@@ -51,8 +52,16 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    /*setProducts(state,receiveProducts){
+      state.itensList=receiveProducts
+    }*/
   },
   actions: {
+    /*receiveProducts({commit}){
+      axios.get('https://troca-online-api-test.herokuapp.com/products/search').then(res=>{
+        const receiveProducts=res.data
+        commit('setProducts',receiveProducts)})
+    }*/
   },
   modules: {
   }

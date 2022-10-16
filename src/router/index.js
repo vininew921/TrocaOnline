@@ -9,6 +9,7 @@ import HeadPhoneHomeView from "../views/HeadPhoneHomeView.vue";
 import KeyboardHomeView from "../views/KeyboardHomeView.vue";
 import MachineHomeView from "../views/MachineHomeView.vue";
 import PenHomeView from "../views/PenHomeView.vue";
+import HelpHomeView from "../views/HelpHomeView.vue";
 
 
 Vue.use(VueRouter);
@@ -58,6 +59,11 @@ const routes = [
     path: "/home/pens",
     name: "pens",
     component: PenHomeView,
+  },
+  {
+    path: "/home/help",
+    name: "help",
+    component: HelpHomeView,
   },
 ];
 
