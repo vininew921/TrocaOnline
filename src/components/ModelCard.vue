@@ -1,5 +1,4 @@
 <template>
-    <v-btn>
     <div class="product_item">
         <v-img
         class="img_item_style"
@@ -14,7 +13,6 @@
         </button>
         </v-row>
     </div>
-    </v-btn>
 </template>
 
 <script>
