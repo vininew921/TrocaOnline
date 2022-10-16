@@ -1,21 +1,23 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-//import axios from 'axios'
+import Vue from "vue";
+import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
+import auth from "./modules/auth";
+//import axios from 'axios';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    typeItens:[
-      {id:1,type:"Calculadora"},
-      {id:2,type:"Fone"},
-      {id:3,type:"Caneta"},
-      {id:4,type:"Livro"},
-      {id:5,type:"Teclado"},
-      {id:6,type:"Computador"}
+    typeItens: [
+      { id: 1, type: "Calculadora" },
+      { id: 2, type: "Fone" },
+      { id: 3, type: "Caneta" },
+      { id: 4, type: "Livro" },
+      { id: 5, type: "Teclado" },
+      { id: 6, type: "Computador" },
     ],
-    
-    itensList:[
+
+    itensList: [
       {id:1, type:"Calculadora", value:200, image:"Imagem1.png"},
       {id:2, type:"Fone", value:300, image:"Imagem5.png"},
       {id:3, type:"Calculadora", value:260, image:"Imagem2.png"},
@@ -26,29 +28,29 @@ export default new Vuex.Store({
     ],
   },
   getters: {
-    getTypeList(state){
-      return state.typeItens
+    getTypeList(state) {
+      return state.typeItens;
     },
-    getList(state){
-      return state.itensList
+    getList(state) {
+      return state.itensList;
     },
-    getListCalculators(state){
-      return state.itensList.filter((item)=> item.type=="Calculadora")
+    getListCalculators(state) {
+      return state.itensList.filter((item) => item.type == "Calculadora");
     },
-    getListHeadphones(state){
-      return state.itensList.filter((item)=> item.type=="Fone")
+    getListHeadphones(state) {
+      return state.itensList.filter((item) => item.type == "Fone");
     },
-    getListPens(state){
-      return state.itensList.filter((item)=> item.type=="Caneta")
+    getListPens(state) {
+      return state.itensList.filter((item) => item.type == "Caneta");
     },
-    getListBooks(state){
-      return state.itensList.filter((item)=> item.type=="Livro")
+    getListBooks(state) {
+      return state.itensList.filter((item) => item.type == "Livro");
     },
-    getListKeyboard(state){
-      return state.itensList.filter((item)=> item.type=="Teclado")
+    getListKeyboard(state) {
+      return state.itensList.filter((item) => item.type == "Teclado");
     },
-    getListMachines(state){
-      return state.itensList.filter((item)=> item.type=="Computadore")
+    getListMachines(state) {
+      return state.itensList.filter((item) => item.type == "Computadore");
     },
   },
   mutations: {
@@ -64,5 +66,7 @@ export default new Vuex.Store({
     }*/
   },
   modules: {
-  }
-})
+    auth,
+  },
+  plugins: [createPersistedState()],
+});

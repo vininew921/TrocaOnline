@@ -55,30 +55,30 @@
 
 
 <script>
-import ModelCard from "@/components/ModelCard"
+import ModelCard from "@/components/ModelCard";
 export default {
-    name: 'MainViewComponent',
+  name: "MainViewComponent",
 
-    data(){
-      return{
-      }
-    },
+  data(){
+    return{
+    };
+  },
 
-    components:{
-      ModelCard
-      },
+  components:{
+    ModelCard
+  },
 
-    methods:{
-      getListofType(type){
-      var list
+  methods:{
+    getListofType(type){
+      var list;
       for(var element in this.$store.getters.getList){
         if(element.type==type){
-          list.Add(element)
+          list.Add(element);
         }
       }
-      return list
-      }
+      return list;
     }
+  }
 };
 </script>
 

@@ -7,20 +7,20 @@
 </template>
 
 <script>
-import AppbarComponent from '@/components/AppbarComponent'
-import HeaderComponent from '@/components/HeaderComponent'
-import MainViewComponent from '@/components/MainViewComponent'
+import AppbarComponent from "@/components/AppbarComponent";
+import HeaderComponent from "@/components/HeaderComponent";
+import MainViewComponent from "@/components/MainViewComponent";
 
-  export default {
-    name: 'HomeView',
+export default {
+  name: "HomeView",
 
-    components: {
-      AppbarComponent,
-      HeaderComponent,
-      MainViewComponent
-    },
+  components: {
+    AppbarComponent,
+    HeaderComponent,
+    MainViewComponent
+  },
 
-    data() {
+  data() {
     return {
       user: {
         username: "",
@@ -29,5 +29,5 @@ import MainViewComponent from '@/components/MainViewComponent'
       },
     };
   },
-  }
+};
 </script>

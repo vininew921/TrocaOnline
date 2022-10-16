@@ -53,9 +53,9 @@
 </template>
 
 <script>
-import image from "@/assets/logo_website.png"
+import image from "@/assets/logo_website.png";
 export default {
-    name: 'Appbar',
+  name: "Appbar",
 
     data: function () {
         return {
@@ -71,8 +71,6 @@ export default {
             ]
         }
     },
-    methods:{
-    }
 }
 
 </script>

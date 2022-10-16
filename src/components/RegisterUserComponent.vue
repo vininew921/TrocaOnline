@@ -6,7 +6,7 @@
     </div>
     <div id="registerform">
       <v-text-field
-        v-model="user.username"
+        v-model="loginUser.username"
         placeholder="Username"
         dark
         outlined
@@ -15,7 +15,7 @@
       >
       </v-text-field>
       <v-text-field
-        v-model="user.email"
+        v-model="loginUser.email"
         placeholder="E-mail"
         dark
         outlined
@@ -24,7 +24,7 @@
       >
       </v-text-field>
       <v-text-field
-        v-model="user.password"
+        v-model="loginUser.password"
         placeholder="Password"
         type="password"
         dark
@@ -57,9 +57,10 @@
 </template>
 
 <script>
-import { registerUser } from "../services/ApiService";
+import { mapActions } from "vuex";
 
 export default {
+  name: "Register",
   data() {
     return {
       loader: null,
@@ -68,7 +69,7 @@ export default {
       btnColor: "#618DFF",
       //0 - neutro, 1 - OK, 2 - erro
       successResponse: 0,
-      user: {
+      loginUser: {
         username: "",
         email: "",
         password: "",
@@ -76,10 +77,11 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["Register"]),
     async register() {
       try {
         this.loading = true;
-        let responseCode = await registerUser(this.user);
+        let responseCode = await this.Register(this.loginUser);
         this.loading = false;
         if (responseCode == 201) {
           this.btnColor = "#00ff00";
@@ -91,14 +93,15 @@ export default {
           this.btnColor = "#ff0000";
           this.successResponse = 2;
         }
-        setTimeout(() => {
-          this.btnColor = this.neutralColor;
-          this.successResponse = 0;
-        }, 3000);
       } catch (error) {
         this.successResponse = 2;
         this.loading = false;
         this.btnColor = "#ff0000";
+      } finally {
+        setTimeout(() => {
+          this.btnColor = this.neutralColor;
+          this.successResponse = 0;
+        }, 3000);
       }
     },
   },
