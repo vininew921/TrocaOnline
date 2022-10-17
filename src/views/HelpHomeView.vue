@@ -22,18 +22,18 @@
 </template>
 
 <script>
-import AppbarComponent from '@/components/AppbarComponent'
-import HeaderComponent from '@/components/HeaderComponent'
+import AppbarComponent from "@/components/AppbarComponent";
+import HeaderComponent from "@/components/HeaderComponent";
 
-  export default {
-    name: 'HelpHomeView',
+export default {
+  name: "HelpHomeView",
 
-    components: {
-      AppbarComponent,
-      HeaderComponent
-    },
+  components: {
+    AppbarComponent,
+    HeaderComponent
+  },
 
-    data() {
+  data() {
     return {
       user: {
         username: "",
@@ -42,7 +42,7 @@ import HeaderComponent from '@/components/HeaderComponent'
       },
     };
   },
-  }
+};
 </script>
 
 <style>

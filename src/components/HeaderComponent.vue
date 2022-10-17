@@ -10,7 +10,7 @@
     </v-flex>
     <v-spacer></v-spacer>
     <div id="profile_style">
-      <p id="profile_name">{{ user.username }}</p>
+      <p id="profile_name">{{this.$store.getters.stateUser}}</p>
       <v-img id="profile_picture" src="@/assets/logo_website.png"></v-img>
     </div>
 
@@ -37,10 +37,6 @@ export default {
 
   data() {
     return {
-      user: {
-        username: "",
-        email: "",
-      },
     };
   },
   methods: {

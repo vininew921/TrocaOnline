@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import auth from "./modules/auth";
-//import axios from 'axios';
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -17,15 +17,7 @@ export default new Vuex.Store({
       { id: 6, type: "Computador" },
     ],
 
-    itensList: [
-      {id:1, type:"Calculadora", value:200, image:"Imagem1.png"},
-      {id:2, type:"Fone", value:300, image:"Imagem5.png"},
-      {id:3, type:"Calculadora", value:260, image:"Imagem2.png"},
-      {id:4, type:"Calculadora", value:120, image:"Imagem3.png"},
-      {id:5, type:"Fone", value:500, image:"Imagem6.png"},
-      {id:6, type:"Fone", value:320, image:"Imagem7.png"},
-      {id:7, type:"Calculadora", value:110, image:"Imagem4.png"},
-    ],
+    itensList: []
   },
   getters: {
     getTypeList(state) {
@@ -35,35 +27,36 @@ export default new Vuex.Store({
       return state.itensList;
     },
     getListCalculators(state) {
-      return state.itensList.filter((item) => item.type == "Calculadora");
+      return state.itensList.filter((item) => item.category.name == "Calculadora");
     },
     getListHeadphones(state) {
-      return state.itensList.filter((item) => item.type == "Fone");
+      return state.itensList.filter((item) => item.category.name == "Fone");
     },
     getListPens(state) {
-      return state.itensList.filter((item) => item.type == "Caneta");
+      return state.itensList.filter((item) => item.category.name == "Caneta");
     },
     getListBooks(state) {
-      return state.itensList.filter((item) => item.type == "Livro");
+      return state.itensList.filter((item) => item.category.name == "Livro");
     },
     getListKeyboard(state) {
-      return state.itensList.filter((item) => item.type == "Teclado");
+      return state.itensList.filter((item) => item.category.name == "Teclado");
     },
     getListMachines(state) {
-      return state.itensList.filter((item) => item.type == "Computadore");
+      return state.itensList.filter((item) => item.category.name == "Computadore");
     },
   },
   mutations: {
-    /*setProducts(state,receiveProducts){
-      state.itensList=receiveProducts
-    }*/
+    setProducts(state,receiveProducts){
+      state.itensList=receiveProducts;
+    }
   },
   actions: {
-    /*receiveProducts({commit}){
-      axios.get('https://troca-online-api-test.herokuapp.com/products/search').then(res=>{
-        const receiveProducts=res.data
-        commit('setProducts',receiveProducts)})
-    }*/
+    ReceiveProducts({commit}){
+      axios.get("https://troca-online-api-test.herokuapp.com/products/search").then(res=>{
+        const receiveProducts=res.data;
+        commit("setProducts",receiveProducts);
+      });
+    }
   },
   modules: {
     auth,

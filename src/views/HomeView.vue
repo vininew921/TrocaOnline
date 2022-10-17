@@ -29,5 +29,9 @@ export default {
       },
     };
   },
+  
+  created(){
+    this.$store.dispatch("ReceiveProducts");
+  }
 };
 </script>

@@ -18,20 +18,20 @@
 </template>
 
 <script>
-import AppbarComponent from '@/components/AppbarComponent'
-import HeaderComponent from '@/components/HeaderComponent'
-import ModelCard from "@/components/ModelCard"
+import AppbarComponent from "@/components/AppbarComponent";
+import HeaderComponent from "@/components/HeaderComponent";
+import ModelCard from "@/components/ModelCard";
 
-  export default {
-    name: 'MachineHomeView',
+export default {
+  name: "MachineHomeView",
 
-    components: {
-      AppbarComponent,
-      HeaderComponent,
-      ModelCard
-    },
+  components: {
+    AppbarComponent,
+    HeaderComponent,
+    ModelCard
+  },
 
-    data() {
+  data() {
     return {
       user: {
         username: "",
@@ -40,5 +40,5 @@ import ModelCard from "@/components/ModelCard"
       },
     };
   },
-  }
+};
 </script>

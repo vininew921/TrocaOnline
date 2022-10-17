@@ -57,21 +57,21 @@ import image from "@/assets/logo_website.png";
 export default {
   name: "Appbar",
 
-    data: function () {
-        return {
-            image: image,
-            itensBarList:[
-              {title:"Calculadoras",url:"/home/calculators", icon:"calculator_icon.png"},
-              {title:"Fones", url:"/home/headphones", icon:"headphones_icon.png"},
-              {title:"Canetas", url:"/home/pens", icon:"caneta_icon.png"},
-              {title:"Livros", url:"/home/books", icon:"books_icon.png"},
-              {title:"Teclados", url:"/home/keyboards", icon:"keyboard_icon.png"},
-              {title:"Computadores", url:"/home/machines", icon:"screen_icon.png"},
-              {title:"Ajuda", url:"/home/help", icon:"help_icon.png"}
-            ]
-        }
-    },
-}
+  data: function () {
+    return {
+      image: image,
+      itensBarList:[
+        {title:"Calculadoras",url:"/home/calculators", icon:"calculator_icon.png"},
+        {title:"Fones", url:"/home/headphones", icon:"headphones_icon.png"},
+        {title:"Canetas", url:"/home/pens", icon:"caneta_icon.png"},
+        {title:"Livros", url:"/home/books", icon:"books_icon.png"},
+        {title:"Teclados", url:"/home/keyboards", icon:"keyboard_icon.png"},
+        {title:"Computadores", url:"/home/machines", icon:"screen_icon.png"},
+        {title:"Ajuda", url:"/home/help", icon:"help_icon.png"}
+      ]
+    };
+  },
+};
 
 </script>
 
