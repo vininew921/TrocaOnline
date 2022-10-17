@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="#212123" height="120px" app dark>
+  <v-app-bar color="#212123" height="120px" app dark box-shadow="none" border-color="none">
     <v-flex style="search_style" sm7 md3>
       <v-text-field background-color="#A8A8A8" solo>
         <template v-slot:label>
@@ -10,7 +10,7 @@
     </v-flex>
     <v-spacer></v-spacer>
     <div id="profile_style">
-      <p id="profile_name">{{ user.username }}</p>
+      <p id="profile_name">{{this.$store.getters.stateUser}}</p>
       <v-img id="profile_picture" src="@/assets/logo_website.png"></v-img>
     </div>
 
@@ -37,10 +37,6 @@ export default {
 
   data() {
     return {
-      user: {
-        username: "",
-        email: "",
-      },
     };
   },
   methods: {

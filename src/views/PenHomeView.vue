@@ -2,22 +2,33 @@
   <v-app>
     <AppbarComponent></AppbarComponent>
     <HeaderComponent :user="user"></HeaderComponent>
-    <MainViewComponent></MainViewComponent>
+  <v-main style="background-color:#212123">
+    <v-col>
+      <div class="container">
+        <h1 class="text_style">Canetas</h1>
+        <v-row class="row_style">
+        <v-col class="col_style" v-for="prod in this.$store.getters.getListPens" :key="prod.id">
+            <ModelCard :prod="prod"></ModelCard>
+        </v-col>
+      </v-row>
+      </div>
+    </v-col>
+  </v-main>
   </v-app>
 </template>
 
 <script>
 import AppbarComponent from "@/components/AppbarComponent";
 import HeaderComponent from "@/components/HeaderComponent";
-import MainViewComponent from "@/components/MainViewComponent";
+import ModelCard from "@/components/ModelCard";
 
 export default {
-  name: "HomeView",
+  name: "PenHomeView",
 
   components: {
     AppbarComponent,
     HeaderComponent,
-    MainViewComponent
+    ModelCard
   },
 
   data() {
@@ -29,9 +40,5 @@ export default {
       },
     };
   },
-  
-  created(){
-    this.$store.dispatch("ReceiveProducts");
-  }
 };
 </script>
