@@ -8,7 +8,7 @@
         <v-row class="price_row">
         <button>
             <div class="price_style">
-                <p class="texto">R$ {{prod.price}},00</p>
+                <p class="texto">R$ {{prod.value}},00</p>
             </div>
         </button>
         </v-row>
@@ -17,8 +17,8 @@
 
 <script>
 export default {
-    props: ["prod"]
-}
+  props: ["prod"]
+};
 </script>
 
 <style>
