@@ -48,6 +48,28 @@
             <v-list-item-title id="app_font">{{i.title}}</v-list-item-title>
           </v-list-item>
         </v-list-group>
+        <v-list-group
+        :value="true">
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title style="color:#FFFFFF; font-size:21px;">Gerenciamento</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="i in managementBarList"
+            :key="i.title"
+            link
+            @click="$router.push(i.url)">
+            <v-list-item-icon>
+              <v-img
+              contain
+              :src="require(`../assets/icons/${i.icon}`)">
+              </v-img>
+            </v-list-item-icon>
+            <v-list-item-title id="app_font">{{i.title}}</v-list-item-title>
+          </v-list-item>
+        </v-list-group>
 
     </v-navigation-drawer>
 </template>
@@ -68,6 +90,9 @@ export default {
         {title:"Teclados", url:"/home/keyboards", icon:"keyboard_icon.png"},
         {title:"Computadores", url:"/home/machines", icon:"screen_icon.png"},
         {title:"Ajuda", url:"/home/help", icon:"help_icon.png"}
+      ],
+      managementBarList: [
+        {title: "Cadastrar Produto", url:"/product/register", icon:"add_product_icon.png"}
       ]
     };
   },
