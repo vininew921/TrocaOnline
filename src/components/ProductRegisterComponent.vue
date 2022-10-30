@@ -13,6 +13,7 @@
             dark
             outlined
             rounded
+            hide-details
           >
           </v-text-field>
           <v-text-field
@@ -22,6 +23,7 @@
             dark
             outlined
             rounded
+            hide-details
           >
           </v-text-field>
         </div>
@@ -29,89 +31,95 @@
           <div class="registerProductCenterColumn">
             <v-img
               class="img_item_style"
-              height="300px"
+              contain
+              max-height="100%"
+              max-width="100%"
               :src="require(`../assets/logo_website.png`)"
             >
             </v-img>
           </div>
           <div class="registerProductCenterColumn">
-            <v-text-field
+            <v-select
               v-model="registeredProduct.category"
-              placeholder="Categoria"
+              :items="this.$store.getters.getTypeList"
+              item-text="type"
+              label="Categoria"
+              outlined
+              rounded
+              hide-details
+              dark
+            >
+            </v-select>
+            <v-text-field
+              v-model="registeredProduct.quantity"
+              placeholder="Disponibilidade"
               dark
               outlined
               rounded
-              dense
               hide-details
+              type="number"
+              background-color="#618DFF"
               class="registerProductDetailButton"
             >
             </v-text-field>
             <v-text-field
-              v-model="registeredProduct.category"
-              placeholder="Categoria"
+              v-model="registeredProduct.value"
+              placeholder="Valor"
               dark
               outlined
               rounded
-              dense
               hide-details
+              type="number"
+              background-color="#618DFF"
               class="registerProductDetailButton"
             >
             </v-text-field>
             <v-text-field
-              v-model="registeredProduct.category"
-              placeholder="Categoria"
+              v-model="registeredProduct.tags"
+              placeholder="Tags"
               dark
               outlined
               rounded
-              dense
               hide-details
+              background-color="#618DFF"
               class="registerProductDetailButton"
             >
             </v-text-field>
             <v-text-field
-              v-model="registeredProduct.category"
-              placeholder="Categoria"
+              v-model="registeredProduct.deadline"
+              placeholder="Limite de dias"
               dark
               outlined
               rounded
-              dense
               hide-details
+              type="number"
+              background-color="#618DFF"
               class="registerProductDetailButton"
             >
             </v-text-field>
-            <v-text-field
-              v-model="registeredProduct.category"
-              placeholder="Categoria"
-              dark
+            <v-select
+              v-model="registeredProduct.isSale"
+              :items="salesOptions"
+              item-text="type"
+              label="Venda?"
               outlined
               rounded
-              dense
               hide-details
-              class="registerProductDetailButton"
-            >
-            </v-text-field>
-            <v-text-field
-              v-model="registeredProduct.category"
-              placeholder="Categoria"
               dark
-              outlined
-              rounded
-              dense
-              hide-details
-              class="registerProductDetailButton"
             >
-            </v-text-field>
-            <v-text-field
-              v-model="registeredProduct.category"
-              placeholder="Categoria"
+            </v-select>
+            <v-btn
+              depressed
+              rounded
+              x-large
               dark
-              outlined
-              rounded
-              dense
-              hide-details
-              class="registerProductDetailButton"
+              color="#0A7A1C"
+              block
+              @click="publish"
+              id="publishProductBtn"
             >
-            </v-text-field>
+              Publicar
+            </v-btn>
           </div>
         </div>
       </div>
@@ -128,12 +136,14 @@ export default {
       registeredProduct: {
         title: "",
         description: "",
-        category: "",
-        value: "",
+        category: undefined,
+        quantity: undefined,
+        value: undefined,
         tags: "",
-        limitOfDays: "",
-        isSale: false,
+        deadline: undefined,
+        isSale: undefined,
       },
+      salesOptions: ["Sim", "Não"],
     };
   },
 
@@ -205,12 +215,18 @@ export default {
 
 .registerProductCenter {
   display: flex;
-}
-.registerProductCenterColumn {
-  width: 50%;
+  height: 79%;
 }
 
-.registerProductDetailButton {
-  margin: 8px;
+.registerProductCenterColumn {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+#publishProductBtn {
+  margin: 2px;
 }
 </style>

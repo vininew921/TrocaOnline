@@ -17,7 +17,7 @@ export default new Vuex.Store({
       { id: 6, type: "Computador" },
     ],
 
-    itensList: []
+    itensList: [],
   },
   getters: {
     getTypeList(state) {
@@ -27,7 +27,9 @@ export default new Vuex.Store({
       return state.itensList;
     },
     getListCalculators(state) {
-      return state.itensList.filter((item) => item.category.name == "Calculadora");
+      return state.itensList.filter(
+        (item) => item.category.name == "Calculadora"
+      );
     },
     getListHeadphones(state) {
       return state.itensList.filter((item) => item.category.name == "Fone");
@@ -42,21 +44,23 @@ export default new Vuex.Store({
       return state.itensList.filter((item) => item.category.name == "Teclado");
     },
     getListMachines(state) {
-      return state.itensList.filter((item) => item.category.name == "Computadore");
+      return state.itensList.filter(
+        (item) => item.category.name == "Computador"
+      );
     },
   },
   mutations: {
-    setProducts(state,receiveProducts){
-      state.itensList=receiveProducts;
-    }
+    setProducts(state, receiveProducts) {
+      state.itensList = receiveProducts;
+    },
   },
   actions: {
-    ReceiveProducts({commit}){
-      axios.get("https://troca-online-api-test.herokuapp.com/products/search").then(res=>{
-        const receiveProducts=res.data;
-        commit("setProducts",receiveProducts);
+    ReceiveProducts({ commit }) {
+      axios.get("/products/search").then((res) => {
+        const receiveProducts = res.data;
+        commit("setProducts", receiveProducts);
       });
-    }
+    },
   },
   modules: {
     auth,
