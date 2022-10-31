@@ -77,6 +77,7 @@ const routes = [
     path: "/product/register",
     name: "registerProduct",
     component: ProductRegisterView,
+    meta: { requiresAuth: true },
   },
 ];
 
