@@ -24,6 +24,9 @@
         background-color="#6c727f"
       >
       </v-text-field>
+
+      <p id="alertmessage">Invalid Username/Password</p>
+
       <v-btn
         depressed
         rounded
@@ -58,6 +61,7 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
+      message_visibility: "hidden",
       loader: null,
       loading: false,
       neutralColor: "#618DFF",
@@ -95,10 +99,12 @@ export default {
         this.successResponse = 2;
         this.loading = false;
         this.btnColor = "#ff0000";
+        document.getElementById("alertmessage").style.visibility = "visible";
       } finally {
         setTimeout(() => {
           this.btnColor = this.neutralColor;
           this.successResponse = 0;
+          document.getElementById("alertmessage").style.visibility = "hidden";
         }, 3000);
       }
     },
@@ -144,6 +150,13 @@ export default {
   margin-top: 5px;
   padding: 12px;
   text-align: center;
+}
+
+#alertmessage{
+  color:#B80606;
+  padding: 0px;
+  visibility: hidden;
+  text-align: initial;
 }
 
 #noAccount,
