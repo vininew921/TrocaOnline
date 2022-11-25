@@ -10,6 +10,7 @@ import KeyboardHomeView from "../views/KeyboardHomeView.vue";
 import MachineHomeView from "../views/MachineHomeView.vue";
 import PenHomeView from "../views/PenHomeView.vue";
 import HelpHomeView from "../views/HelpHomeView.vue";
+import ProductRegisterView from "../views/ProductRegisterView.vue";
 import store from "@/store";
 
 Vue.use(VueRouter);
@@ -71,6 +72,12 @@ const routes = [
     path: "/home/help",
     name: "help",
     component: HelpHomeView,
+  },
+  {
+    path: "/product/register",
+    name: "registerProduct",
+    component: ProductRegisterView,
+    meta: { requiresAuth: true },
   },
 ];
 
