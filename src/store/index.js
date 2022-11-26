@@ -71,8 +71,10 @@ export default new Vuex.Store({
         state.filtering = true;
         state.filteredItensList = state.itensList.filter(
           (item) =>
-            item.category.name.toLowerCase().includes(searchString) ||
-            item.description.toLowerCase().includes(searchString)
+            item.category.name
+              .toLowerCase()
+              .includes(searchString.toLowerCase()) ||
+            item.description.toLowerCase().includes(searchString.toLowerCase())
         );
       } else {
         state.filtering = false;
