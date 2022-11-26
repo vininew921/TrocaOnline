@@ -47,7 +47,7 @@
         :disable="loading"
         @click="register"
       >
-        <h4 v-if="successResponse == 0"><i class="bi bi-key"></i> Create Account</h4>
+        <div id="button_message" v-if="successResponse == 0"><img src="../assets/icons/key.png" id="image_key"/><h4>Create Account</h4></div>
         <v-icon dark x-large v-if="successResponse == 1">
           mdi-check-circle-outline
         </v-icon>
@@ -162,5 +162,13 @@ export default {
   margin: 0px;
   visibility: hidden;
   text-align: center;
+}
+
+#image_key {
+  width: 40px;
+}
+
+#button_message{
+  display: contents;
 }
 </style>
