@@ -14,6 +14,7 @@
         background-color="#6c727f"
       >
       </v-text-field>
+      <p id="UsernameAlert" class="alertmessage">Create your username (A-Z, 0-9)</p>
       <v-text-field
         v-model="loginUser.email"
         placeholder="E-mail"
@@ -23,6 +24,7 @@
         background-color="#6c727f"
       >
       </v-text-field>
+      <p id="EmailAlert" class="alertmessage">Invalid Email (@awqe.br)</p>
       <v-text-field
         v-model="loginUser.password"
         placeholder="Password"
@@ -33,6 +35,7 @@
         background-color="#6c727f"
       >
       </v-text-field>
+      <p id="PasswordAlert" class="alertmessage">Password must be 6-20 characters</p>
       <v-btn
         depressed
         rounded
@@ -44,7 +47,7 @@
         :disable="loading"
         @click="register"
       >
-        <div v-if="successResponse == 0">Create Account</div>
+        <div id="button_message" v-if="successResponse == 0"><img src="../assets/icons/key.png" id="image_key"/><h4>Create Account</h4></div>
         <v-icon dark x-large v-if="successResponse == 1">
           mdi-check-circle-outline
         </v-icon>
@@ -80,6 +83,7 @@ export default {
     ...mapActions(["Register"]),
     async register() {
       try {
+        this.validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         this.loading = true;
         let responseCode = await this.Register(this.loginUser);
         this.loading = false;
@@ -98,7 +102,22 @@ export default {
         this.loading = false;
         this.btnColor = "#ff0000";
       } finally {
+        if(this.successResponse==2)
+        {
+          if(this.loginUser.username.length==0){
+            document.getElementById("UsernameAlert").style.visibility = "visible";
+          }
+          if(!this.loginUser.email.match(this.validRegex)){
+            document.getElementById("EmailAlert").style.visibility = "visible";
+          }
+          if(this.loginUser.password.length<6 || this.loginUser.password.length>20){
+            document.getElementById("PasswordAlert").style.visibility = "visible";
+          }
+        }
         setTimeout(() => {
+          document.getElementById("UsernameAlert").style.visibility = "hidden";
+          document.getElementById("EmailAlert").style.visibility = "hidden";
+          document.getElementById("PasswordAlert").style.visibility = "hidden";
           this.btnColor = this.neutralColor;
           this.successResponse = 0;
         }, 3000);
@@ -136,5 +155,20 @@ export default {
   font-size: 40px;
   line-height: 60px;
   color: #618dff;
+}
+.alertmessage{
+  color:#B80606;
+  padding: 0px;
+  margin: 0px;
+  visibility: hidden;
+  text-align: center;
+}
+
+#image_key {
+  width: 40px;
+}
+
+#button_message{
+  display: contents;
 }
 </style>
