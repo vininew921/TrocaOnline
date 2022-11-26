@@ -1,7 +1,19 @@
 <template>
-  <v-app-bar color="#212123" height="120px" app dark box-shadow="none" border-color="none">
-    <v-flex style="search_style" sm7 md3>
-      <v-text-field background-color="#A8A8A8" solo>
+  <v-app-bar
+    color="#212123"
+    height="120px"
+    app
+    dark
+    box-shadow="none"
+    border-color="none"
+  >
+    <v-flex style="search_style" sm7 md3 v-if="$route.path.includes('/home')">
+      <v-text-field
+        background-color="#A8A8A8"
+        solo
+        v-model="searchString"
+        @change="onSearch"
+      >
         <template v-slot:label>
           <v-icon style="vertical-align: middle"> mdi-magnify </v-icon>
           Pesquisa
@@ -10,7 +22,7 @@
     </v-flex>
     <v-spacer></v-spacer>
     <div id="profile_style">
-      <p id="profile_name">{{this.$store.getters.stateUser}}</p>
+      <p id="profile_name">{{ this.$store.getters.stateUser }}</p>
       <v-img id="profile_picture" src="@/assets/logo_website.png"></v-img>
     </div>
 
@@ -37,12 +49,16 @@ export default {
 
   data() {
     return {
+      searchString: "",
     };
   },
   methods: {
     async logout() {
       await this.$store.dispatch("LogOut");
       this.$router.push("/login");
+    },
+    async onSearch() {
+      await this.$store.dispatch("FilterProducts", this.searchString);
     },
   },
 };

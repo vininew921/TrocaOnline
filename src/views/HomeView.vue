@@ -17,7 +17,7 @@ export default {
   components: {
     AppbarComponent,
     HeaderComponent,
-    MainViewComponent
+    MainViewComponent,
   },
 
   data() {
@@ -29,9 +29,9 @@ export default {
       },
     };
   },
-  
-  created(){
+
+  created() {
     this.$store.dispatch("ReceiveProducts");
-  }
+  },
 };
 </script>

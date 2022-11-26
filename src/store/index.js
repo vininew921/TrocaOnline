@@ -18,33 +18,46 @@ export default new Vuex.Store({
     ],
 
     itensList: [],
+    filteredItensList: [],
+    filtering: false,
   },
   getters: {
     getTypeList(state) {
       return state.typeItens;
     },
-    getList(state) {
-      return state.itensList;
+    getList(state, getters) {
+      return getters.getCurrentList;
     },
-    getListCalculators(state) {
-      return state.itensList.filter(
+    getCurrentList(state) {
+      return state.filtering ? state.filteredItensList : state.itensList;
+    },
+    getListCalculators(state, getters) {
+      return getters.getCurrentList.filter(
         (item) => item.category.name == "Calculadora"
       );
     },
-    getListHeadphones(state) {
-      return state.itensList.filter((item) => item.category.name == "Fone");
+    getListHeadphones(state, getters) {
+      return getters.getCurrentList.filter(
+        (item) => item.category.name == "Fone"
+      );
     },
-    getListPens(state) {
-      return state.itensList.filter((item) => item.category.name == "Caneta");
+    getListPens(state, getters) {
+      return getters.getCurrentList.filter(
+        (item) => item.category.name == "Caneta"
+      );
     },
-    getListBooks(state) {
-      return state.itensList.filter((item) => item.category.name == "Livro");
+    getListBooks(state, getters) {
+      return getters.getCurrentList.filter(
+        (item) => item.category.name == "Livro"
+      );
     },
-    getListKeyboard(state) {
-      return state.itensList.filter((item) => item.category.name == "Teclado");
+    getListKeyboard(state, getters) {
+      return getters.getCurrentList.filter(
+        (item) => item.category.name == "Teclado"
+      );
     },
-    getListMachines(state) {
-      return state.itensList.filter(
+    getListMachines(state, getters) {
+      return getters.getCurrentList.filter(
         (item) => item.category.name == "Computador"
       );
     },
@@ -53,6 +66,20 @@ export default new Vuex.Store({
     setProducts(state, receiveProducts) {
       state.itensList = receiveProducts;
     },
+    filterProducts(state, searchString) {
+      if (searchString && searchString != "") {
+        state.filtering = true;
+        state.filteredItensList = state.itensList.filter(
+          (item) =>
+            item.category.name
+              .toLowerCase()
+              .includes(searchString.toLowerCase()) ||
+            item.description.toLowerCase().includes(searchString.toLowerCase())
+        );
+      } else {
+        state.filtering = false;
+      }
+    },
   },
   actions: {
     ReceiveProducts({ commit }) {
@@ -60,6 +87,9 @@ export default new Vuex.Store({
         const receiveProducts = res.data;
         commit("setProducts", receiveProducts);
       });
+    },
+    FilterProducts({ commit }, searchString) {
+      commit("filterProducts", searchString);
     },
   },
   modules: {
